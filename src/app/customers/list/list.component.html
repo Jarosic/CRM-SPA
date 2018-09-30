@@ -1,0 +1,29 @@
+
+<input class="form-control mr-sm-2 mr-2 mt-2 mb-2" style="max-width:200px" type="search" placeholder="Search" aria-label="Search">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Age</th>
+          <th></th>
+      </tr>
+    </thead>
+    <tbody class="customers-table">
+        <tr *ngFor = "let customer of customers">
+            <th scope="row">{{ customer.id }}</th>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.surname }}</td>
+            <td>{{ customer.age }}</td>
+            <td>
+                <button type="button" (click)="getDetails(customer.id)" class="btn btn-primary btn-sm" routerLink="/customers/details" >Details</button>
+                <button type="button" class="btn btn-primary btn-sm" routerLink="/customers/edit">Edit</button>
+                <button type="button" id="btn-delete" class="btn btn-danger btn-sm">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
