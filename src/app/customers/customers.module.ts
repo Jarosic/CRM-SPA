@@ -4,7 +4,7 @@ import { Route, RouterModule } from '@angular/router';
 import { HttpClientModule }   from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 
-import { CustomersComponent } from './customers/customers.component';
+import { CustomersComponent } from './customers.component';
 import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';

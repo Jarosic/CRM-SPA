@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { CustomersService } from '../customers.service';
-import { Customer } from '../models/customer';
-
 
 @Component({
   selector: 'app-add',
@@ -14,15 +12,14 @@ export class AddComponent {
   name: string;
   surname: string;
   age: number;
-  newCustomer = {};
 
-  onSubmit() {
-    this.newCustomer = {name: this.name, surname: this.surname, age: this.age}
-    this.customersService.createCustomer(this.newCustomer)
-      .subscribe(
-        (data: Customer) => { console.log(data) },
-        error => console.log(error)
-      );
+  onSubmit(): void {
+    this.customersService.saveDataCustomer(
+      {
+        name: this.name,
+        surname: this.surname,
+        age: this.age
+      }
+    );
   }
-
 }

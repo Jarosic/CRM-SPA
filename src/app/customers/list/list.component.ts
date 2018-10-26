@@ -1,32 +1,39 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+
+import { Router } from '@angular/router';
+
 import { CustomersService } from '../customers.service';
 import { Customers, Customer } from '../models/customer';
+
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
 
   customers: Customers = [];
-  
-  constructor(private customersService: CustomersService) { }
+  @Output() getId: EventEmitter<number> = new EventEmitter();
 
-  customer: Customer;
-
-  ngOnInit() {
+  constructor(private customersService: CustomersService, private router: Router) {
     this.customersService.list()
-      .subscribe((data: Customers) => { 
+      .subscribe((data: Customers) => {
         this.customers = data;
       });
+
+    this.customersService.changeData.subscribe((data: Customer) => {
+      this.customersService.createCustomer(data)
+        .subscribe(() => {
+          this.customersService.list()
+            .subscribe((list: Customers) => {
+            this.customers = list;
+          });
+        });
+    });
   }
 
   getDetails(id: number) {
-    this.customersService.getCustomer(id)
-      .subscribe((data) => {
-        this.customer = data
-        this.customersService.saveDataCustomer(data);
-      });
+    this.getId.emit(id);
   }
 }

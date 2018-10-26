@@ -5,7 +5,9 @@
 <div class="container m-3">
     <div class="row justify-content-around">
       <div class="col-md-6 text-center" style="min-height: 500px">
-        <app-list></app-list>
+
+        <app-list (getId)="getId($event)"></app-list>
+
       </div>
       <div class="col-md-4 float-right text-center">
         <button class="btn btn-secondary m-2" routerLink="/customers/add">Add customer</button>

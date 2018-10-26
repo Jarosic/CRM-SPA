@@ -7,14 +7,10 @@ import { Customer } from '../models/customer';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent {
+
+  customer: Customer;
   constructor(private customersService: CustomersService) {
-    this.customersService.changeData.subscribe(data => this.customer = data)
-  }
-
-  customer:Customer;
-
-  ngOnInit() {
-    
+    this.customersService.changeData.subscribe(data => this.customer = data);
   }
 }
