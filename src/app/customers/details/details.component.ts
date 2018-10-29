@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
+
 import { CustomersService } from '../customers.service';
 import { Customer } from '../models/customer';
 
@@ -10,7 +13,15 @@ import { Customer } from '../models/customer';
 export class DetailsComponent {
 
   customer: Customer;
-  constructor(private customersService: CustomersService) {
-    this.customersService.changeData.subscribe(data => this.customer = data);
+  constructor(
+    private customersService: CustomersService, 
+    private route: ActivatedRoute
+    ) {
+    route.params.subscribe((params) => {
+      customersService.getCustomer(params.id)
+        .subscribe((customer: Customer) => {
+          this.customer = customer;
+        })
+    });
   }
 }

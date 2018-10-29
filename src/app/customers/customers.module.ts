@@ -17,7 +17,7 @@ import { DetailsComponent } from './details/details.component';
 const routes: Route[] = [
   { path: '', component: CustomersComponent, children: [
     { path: 'customers', component: ListComponent },
-    { path: 'details', component: DetailsComponent },
+    { path: 'details/:id', component: DetailsComponent },
     { path: 'add', component: AddComponent },
     { path: 'edit', component: EditComponent }
   ]}

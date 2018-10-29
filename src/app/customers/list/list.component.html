@@ -17,9 +17,23 @@
             <td>{{ customer.surname }}</td>
             <td>{{ customer.age }}</td>
             <td>
-                <button type="button" (click)="getDetails(customer.id)" class="btn btn-primary btn-sm" routerLink="/customers/details" >Details</button>
-                <button type="button" class="btn btn-success btn-sm" routerLink="/customers/edit">Edit</button>
-                <button type="button" id="btn-delete" class="btn btn-danger btn-sm">Delete</button>
+                <button
+                    type="button"
+                    (click)="getDetails()" 
+                    class="btn btn-primary btn-sm" 
+                    [routerLink]="['/customers/details', customer.id]" 
+                >Details</button>
+                <button 
+                    type="button" 
+                    class="btn btn-success btn-sm" 
+                    routerLink="/customers/edit"
+                >Edit</button>
+                <button 
+                    type="button" 
+                    id="btn-delete" 
+                    class="btn btn-danger btn-sm"
+                    (click)="deleteCustomer(customer.id)"
+                >Delete</button>
             </td>
         </tr>
     </tbody>

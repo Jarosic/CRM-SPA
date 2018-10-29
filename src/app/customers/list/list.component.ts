@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { CustomersService } from '../customers.service';
 import { Customers, Customer } from '../models/customer';
+
 
 
 @Component({
@@ -14,9 +16,9 @@ import { Customers, Customer } from '../models/customer';
 export class ListComponent {
 
   customers: Customers = [];
-  @Output() getId: EventEmitter<number> = new EventEmitter();
+  sub1: Subscription
 
-  constructor(private customersService: CustomersService, private router: Router) {
+  constructor(private customersService: CustomersService, private route: ActivatedRoute) {
     this.customersService.list()
       .subscribe((data: Customers) => {
         this.customers = data;
@@ -33,7 +35,18 @@ export class ListComponent {
     });
   }
 
-  getDetails(id: number) {
-    this.getId.emit(id);
+  getDetails() {
+    if (this.sub1) { this.sub1.unsubscribe() };
+  }
+
+  deleteCustomer(id: number) {
+    if (this.sub1) { this.sub1.unsubscribe() };
+    this.customersService.delete(id)
+      .subscribe(() => {
+        this.customersService.list()
+          .subscribe((list: Customers) => {
+            this.customers = list;
+          });
+      })
   }
 }

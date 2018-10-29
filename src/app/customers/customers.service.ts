@@ -12,7 +12,6 @@ export class CustomersService {
 
   private customerSer: Customer;
   changeData: EventEmitter<Customer> = new EventEmitter();
-  isReload = false;
 
   baseUrl = 'https://5bafa4ed73f71400140d3c25.mockapi.io';
 
@@ -33,5 +32,9 @@ export class CustomersService {
 
   createCustomer(data: Customer): Observable<Customer> {
     return this.http.post<Customer>(`${this.baseUrl}/customers`, data);
+  }
+
+  delete(id: number): Observable<Customer> {
+    return this.http.delete<Customer>(`${this.baseUrl}/customers/${id}`)
   }
 }
