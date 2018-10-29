@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 import { CustomersService } from '../customers.service';
 import { Customers, Customer } from '../models/customer';
+import { switchMap } from 'rxjs/operators';
 
 
 
@@ -16,7 +16,6 @@ import { Customers, Customer } from '../models/customer';
 export class ListComponent {
 
   customers: Customers = [];
-  sub1: Subscription
 
   constructor(private customersService: CustomersService, private route: ActivatedRoute) {
     this.customersService.list()
@@ -24,29 +23,25 @@ export class ListComponent {
         this.customers = data;
       });
 
-    this.customersService.changeData.subscribe((data: Customer) => {
-      this.customersService.createCustomer(data)
-        .subscribe(() => {
-          this.customersService.list()
-            .subscribe((list: Customers) => {
-            this.customers = list;
-          });
-        });
+    this.customersService.changeData.pipe(
+      switchMap((data: Customer) => {
+        return this.customersService.createCustomer(data)
+      }),
+      switchMap(() => {
+        return this.customersService.list()
+      })
+    ).subscribe((data: Customers) => {
+      this.customers = data;
     });
   }
 
-  getDetails() {
-    if (this.sub1) { this.sub1.unsubscribe() };
-  }
-
   deleteCustomer(id: number) {
-    if (this.sub1) { this.sub1.unsubscribe() };
-    this.customersService.delete(id)
-      .subscribe(() => {
-        this.customersService.list()
-          .subscribe((list: Customers) => {
-            this.customers = list;
-          });
+    this.customersService.delete(id).pipe(
+      switchMap(() => {
+        return this.customersService.list()
       })
+    ).subscribe((data: Customers) => {
+      this.customers = data;
+    })
   }
 }

@@ -17,11 +17,13 @@ export class DetailsComponent {
     private customersService: CustomersService, 
     private route: ActivatedRoute
     ) {
-    route.params.subscribe((params) => {
-      customersService.getCustomer(params.id)
-        .subscribe((customer: Customer) => {
-          this.customer = customer;
-        })
-    });
+    // route.params.subscribe((params) => {
+    //   customersService.getCustomer(params.id)
+    //     .subscribe((customer: Customer) => {
+    //       this.customer = customer;
+    //     })
+    // });
+
+    
   }
 }
