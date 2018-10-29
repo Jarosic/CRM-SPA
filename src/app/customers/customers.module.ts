@@ -19,7 +19,7 @@ const routes: Route[] = [
     { path: 'customers', component: ListComponent },
     { path: 'details/:id', component: DetailsComponent },
     { path: 'add', component: AddComponent },
-    { path: 'edit', component: EditComponent }
+    { path: 'edit/:id', component: EditComponent }
   ]}
 ];
 

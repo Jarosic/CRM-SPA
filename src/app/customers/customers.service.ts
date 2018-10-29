@@ -10,8 +10,8 @@ import { Customer, Customers } from './models/customer';
 })
 export class CustomersService {
 
-  private customerSer: Customer;
   changeData: EventEmitter<Customer> = new EventEmitter();
+  newList: EventEmitter<Customer> = new EventEmitter();
 
   baseUrl = 'https://5bafa4ed73f71400140d3c25.mockapi.io';
 
@@ -26,15 +26,22 @@ export class CustomersService {
   }
 
   saveDataCustomer(data: Customer): void {
-    this.customerSer = data;
-    this.changeData.emit(this.customerSer);
+    this.changeData.emit(data);
+  }
+
+  updateList(data) {
+    this.newList.emit(data);
   }
 
   createCustomer(data: Customer): Observable<Customer> {
     return this.http.post<Customer>(`${this.baseUrl}/customers`, data);
   }
 
-  delete(id: number): Observable<Customer> {
+  editCustomer(id: number, data: Customer) {
+    return this.http.put<Customer>(`${this.baseUrl}/customers/${id}`, data)
+  }
+
+  deleteCustomer(id: number): Observable<Customer> {
     return this.http.delete<Customer>(`${this.baseUrl}/customers/${id}`);
   }
 }

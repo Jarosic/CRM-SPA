@@ -6,8 +6,6 @@ import { CustomersService } from '../customers.service';
 import { Customers, Customer } from '../models/customer';
 import { switchMap } from 'rxjs/operators';
 
-
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -15,7 +13,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class ListComponent {
 
-  customers: Customers = [];
+  customers: Customers;
 
   constructor(private customersService: CustomersService, private route: ActivatedRoute) {
     this.customersService.list()
@@ -33,10 +31,14 @@ export class ListComponent {
     ).subscribe((data: Customers) => {
       this.customers = data;
     });
+
+    customersService.newList.subscribe((data: Customers) => {
+      this.customers = data;
+    });
   }
 
   deleteCustomer(id: number) {
-    this.customersService.delete(id).pipe(
+    this.customersService.deleteCustomer(id).pipe(
       switchMap(() => {
         return this.customersService.list();
       })

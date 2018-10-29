@@ -1,18 +1,45 @@
 <h3>Edit customer</h3>
 <form>
-  <strong>id: 1</strong>
+  <strong>id: {{ id }}</strong>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="name" class="form-control" value="" id="edit-id" aria-describedby="emailHelp" placeholder="Enter name">
+      <input 
+        type="name" 
+        class="form-control" 
+        value="" 
+        id="edit-id" 
+        aria-describedby="emailHelp" 
+        placeholder="Enter name"
+        name="name"
+        [(ngModel)]="name"
+      >
     </div>
     <div class="form-group">
       <label for="surname">Surname</label>
-      <input type="text" class="form-control" value="" id="edit-surname" placeholder="Enter surname">
+      <input 
+        type="text" 
+        class="form-control" 
+        id="edit-surname" 
+        placeholder="Enter surname"
+        name="surname"
+        [(ngModel)]="surname"
+      >
     </div>
     <div class="form-group">
       <label for="age">Age</label>
-      <input type="number" class="form-control" value="" id="edit-age" placeholder="Enter age">
+      <input
+        type="number" 
+        class="form-control" 
+        name="age"
+        id="edit-age" 
+        placeholder="Enter age"
+        [(ngModel)]="age"
+      >
     </div>
-    <button type="submit" class="btn btn-primary m-1" routerLink="/">Submit</button>
+    <button 
+      type="submit" 
+      class="btn btn-primary m-1"
+      (click)="onSubmit()" 
+      routerLink="/">Submit</button>
     <button  class="btn btn-secondary" routerLink="/">Close</button>
 </form>
