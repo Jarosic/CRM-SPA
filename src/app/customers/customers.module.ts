@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
-import { HttpClientModule }   from '@angular/common/http';
-import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { CustomersComponent } from './customers.component';
 import { ListComponent } from './list/list.component';
@@ -21,7 +21,7 @@ const routes: Route[] = [
     { path: 'add', component: AddComponent },
     { path: 'edit', component: EditComponent }
   ]}
-]
+];
 
 @NgModule({
   imports: [
@@ -31,8 +31,8 @@ const routes: Route[] = [
     FormsModule
   ],
   declarations: [
-    CustomersComponent, 
-    ListComponent, 
+    CustomersComponent,
+    ListComponent,
     AddComponent,
     EditComponent,
     DetailsComponent

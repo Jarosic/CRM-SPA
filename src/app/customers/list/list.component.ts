@@ -25,10 +25,10 @@ export class ListComponent {
 
     this.customersService.changeData.pipe(
       switchMap((data: Customer) => {
-        return this.customersService.createCustomer(data)
+        return this.customersService.createCustomer(data);
       }),
       switchMap(() => {
-        return this.customersService.list()
+        return this.customersService.list();
       })
     ).subscribe((data: Customers) => {
       this.customers = data;
@@ -38,10 +38,10 @@ export class ListComponent {
   deleteCustomer(id: number) {
     this.customersService.delete(id).pipe(
       switchMap(() => {
-        return this.customersService.list()
+        return this.customersService.list();
       })
     ).subscribe((data: Customers) => {
       this.customers = data;
-    })
+    });
   }
 }

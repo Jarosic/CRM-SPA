@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 import { CustomersService } from '../customers.service';
 import { Customer } from '../models/customer';
@@ -13,17 +13,18 @@ import { Customer } from '../models/customer';
 export class DetailsComponent {
 
   customer: Customer;
+
   constructor(
-    private customersService: CustomersService, 
+    private customersService: CustomersService,
     private route: ActivatedRoute
     ) {
-    // route.params.subscribe((params) => {
-    //   customersService.getCustomer(params.id)
-    //     .subscribe((customer: Customer) => {
-    //       this.customer = customer;
-    //     })
-    // });
 
-    
+    this.route.params.pipe(
+      switchMap((params: any) => {
+        return customersService.getCustomer(params.id);
+      })
+    ).subscribe((data: Customer) => {
+      this.customer = data;
+    });
   }
 }
