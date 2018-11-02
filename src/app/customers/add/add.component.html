@@ -15,10 +15,10 @@
         minlength="2"
         #name="ngModel"
       >
-      <p 
-        style="color: red;" 
-        *ngIf="name.invalid && name.touched"
-      >Enter name correctly</p>
+      <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <p *ngIf="name.errors.minlength">Name must be at least 2 characters long.</p>
+        <p *ngIf="name.errors.required">Name is required.</p>
+      </div>
     </div>
     <div class="form-group">
       <label for="surname">Surname</label>
@@ -33,10 +33,10 @@
         #surname="ngModel"
         minlength="2"
       >
-      <p 
-        style="color: red;" 
-        *ngIf="surname.invalid && surname.touched"
-      >Enter surname correctly</p>
+      <div class="alert alert-danger" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
+        <p *ngIf="surname.errors.minlength">Surname must be at least 2 characters long.</p>
+        <p *ngIf="surname.errors.required">Surname is required.</p>
+      </div>
     </div>
     <div class="form-group">
       <label for="age">Age</label>
@@ -50,10 +50,9 @@
         required
         #age="ngModel"
       >
-      <p 
-        style="color: red;" 
-        *ngIf="age.invalid && age.touched"
-      >Enter age</p>
+      <div class="alert alert-danger" *ngIf="age.invalid && (age.dirty || age.touched)">
+        <p *ngIf="age.errors.required">Age is required.</p>
+      </div>
     </div>
     <button 
       type="submit" 

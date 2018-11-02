@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 import { CustomersService } from '../customers.service';
 
-
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
