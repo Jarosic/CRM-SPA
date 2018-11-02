@@ -38,7 +38,7 @@ export class CustomersService {
   }
 
   editCustomer(id: number, data: Customer) {
-    return this.http.put<Customer>(`${this.baseUrl}/customers/${id}`, data)
+    return this.http.put<Customer>(`${this.baseUrl}/customers/${id}`, data);
   }
 
   deleteCustomer(id: number): Observable<Customer> {

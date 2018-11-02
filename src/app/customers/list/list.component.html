@@ -3,16 +3,18 @@
 <table class="table table-striped">
     <thead>
       <tr>
+        <th scope="col">#</th>
         <th scope="col">Id</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Age</th>
-          <th></th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Age</th>
+        <th></th>
       </tr>
     </thead>
     <tbody class="customers-table">
-        <tr *ngFor = "let customer of customers">
-            <th scope="row">{{ customer.id }}</th>
+        <tr *ngFor = "let customer of customers; let idx = index">
+            <th scope="row">{{ idx + 1 }}</th>
+            <td>{{ customer.id }}</td>
             <td>{{ customer.name }}</td>
             <td>{{ customer.surname }}</td>
             <td>{{ customer.age }}</td>

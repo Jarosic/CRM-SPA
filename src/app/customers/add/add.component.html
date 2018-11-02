@@ -1,40 +1,64 @@
 
 <h3>Add customer</h3>
-<form>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div class="form-group">
       <label for="name">Name</label>
       <input 
-      type="name" 
-      class="form-control"  
-      id="add-name" 
-      aria-describedby="emailHelp" 
-      placeholder="Enter name"
-      [(ngModel)]="name"
-      name="name"
+        type="name" 
+        class="form-control"  
+        id="add-name" 
+        aria-describedby="emailHelp" 
+        placeholder="Enter name"
+        ngModel
+        name="name"
+        required
+        minlength="2"
+        #name="ngModel"
       >
+      <p 
+        style="color: red;" 
+        *ngIf="name.invalid && name.touched"
+      >Enter name correctly</p>
     </div>
     <div class="form-group">
       <label for="surname">Surname</label>
       <input 
-      type="text" 
-      class="form-control" 
-      id="add-surname" 
-      placeholder="Enter surname"
-      name="surname"
-      [(ngModel)]="surname"
+        type="text" 
+        class="form-control" 
+        id="add-surname" 
+        placeholder="Enter surname"
+        name="surname"
+        ngModel
+        required
+        #surname="ngModel"
+        minlength="2"
       >
+      <p 
+        style="color: red;" 
+        *ngIf="surname.invalid && surname.touched"
+      >Enter surname correctly</p>
     </div>
     <div class="form-group">
       <label for="age">Age</label>
       <input 
-      type="number" 
-      class="form-control" 
-      id="exampleInputPassword1" 
-      placeholder="Enter age"
-      name="age"
-      [(ngModel)]="age"
+        type="number" 
+        class="form-control" 
+        id="exampleInputPassword1" 
+        placeholder="Enter age"
+        name="age"
+        ngModel
+        required
+        #age="ngModel"
       >
+      <p 
+        style="color: red;" 
+        *ngIf="age.invalid && age.touched"
+      >Enter age</p>
     </div>
-    <button type="submit" class="btn btn-primary m-1" routerLink="/" (click)="onSubmit()">Submit</button>
+    <button 
+      type="submit" 
+      class="btn btn-primary m-1"
+      [disabled]="form.invalid"
+    >Submit</button>
     <button  class="btn btn-secondary" routerLink="/">Close</button>
 </form>
