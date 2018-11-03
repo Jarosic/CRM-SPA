@@ -17,7 +17,6 @@ import { Customer, Customers } from '../models/customer';
 export class EditComponent implements OnDestroy {
 
   id: number;
-  customerName: string;
   sub1: Subscription;
   form: FormGroup;
 
@@ -27,8 +26,8 @@ export class EditComponent implements OnDestroy {
     private customersService: CustomersService
   ) {
       this.form = new FormGroup({
-        'name' : new FormControl('', Validators.required),
-        'surname' : new FormControl('', Validators.required),
+        'name' : new FormControl('', [Validators.required, Validators.minLength(2)]),
+        'surname' : new FormControl('', [Validators.required, Validators.minLength(2)]),
         'age' : new FormControl('', Validators.required)
       });
     this.router.params.pipe(
@@ -57,6 +56,10 @@ export class EditComponent implements OnDestroy {
     ).subscribe();
     this.redirect.navigate(['/']);
   }
+
+  get name() { return this.form.get('name'); }
+  get surname() { return this.form.get('surname'); }
+  get age() { return this.form.get('age'); }
 
   ngOnDestroy() {
     if (this.sub1) {
