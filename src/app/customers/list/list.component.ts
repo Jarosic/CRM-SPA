@@ -14,6 +14,7 @@ import { switchMap } from 'rxjs/operators';
 export class ListComponent {
 
   customers: Customers;
+  searchCustomer = '';
 
   constructor(private customersService: CustomersService, private route: ActivatedRoute) {
     this.customersService.list()

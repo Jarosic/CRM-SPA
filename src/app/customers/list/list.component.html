@@ -1,5 +1,11 @@
 
-<input class="form-control mr-sm-2 mr-2 mt-2 mb-2" style="max-width:200px" type="search" placeholder="Search" aria-label="Search">
+<input 
+    class="form-control mr-sm-2 mr-2 mt-2 mb-2" 
+    style="max-width:200px" type="search" 
+    placeholder="Search" 
+    aria-label="Search"
+    [(ngModel)]="searchCustomer"
+>
 <table class="table table-striped">
     <thead>
       <tr>
@@ -12,7 +18,7 @@
       </tr>
     </thead>
     <tbody class="customers-table">
-        <tr *ngFor = "let customer of customers; let idx = index">
+        <tr *ngFor = "let customer of customers| filter:searchCustomer: 'name'; let idx = index ">
             <th scope="row">{{ idx + 1 }}</th>
             <td>{{ customer.id }}</td>
             <td>{{ customer.name }}</td>

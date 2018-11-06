@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,6 +11,7 @@ import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { CustomersService } from './customers.service';
 import { DetailsComponent } from './details/details.component';
+import { FilterPipe } from './filter.pipe';
 
 
 
@@ -36,7 +38,8 @@ const routes: Route[] = [
     ListComponent,
     AddComponent,
     EditComponent,
-    DetailsComponent
+    DetailsComponent,
+    FilterPipe
   ],
   exports: [RouterModule],
   providers: [CustomersService]
