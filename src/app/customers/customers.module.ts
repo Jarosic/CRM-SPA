@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CustomersComponent } from './customers.component';
 import { ListComponent } from './list/list.component';
@@ -31,7 +32,8 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     CustomersComponent,
