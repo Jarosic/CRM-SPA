@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 import { CustomersComponent } from './customers.component';
 import { ListComponent } from './list/list.component';
@@ -33,7 +35,9 @@ const routes: Route[] = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule
   ],
   declarations: [
     CustomersComponent,

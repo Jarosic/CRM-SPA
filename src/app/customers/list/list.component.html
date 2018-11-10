@@ -27,18 +27,21 @@
             <td>
                 <button
                     type="button"
-                    class="btn btn-primary btn-sm" 
+                    mat-mini-fab 
+                    color="primary" 
                     [routerLink]="['/customers/details', customer.id]" 
                 >Details</button>
                 <button 
                     type="button" 
-                    class="btn btn-success btn-sm" 
+                    mat-mini-fab 
+                    color="accent"
                     [routerLink]="['/customers/edit', customer.id]"
                 >Edit</button>
                 <button 
                     type="button" 
                     id="btn-delete" 
-                    class="btn btn-danger btn-sm"
+                    mat-mini-fab 
+                    color="warn"
                     (click)="deleteCustomer(customer.id)"
                 >Delete</button>
             </td>

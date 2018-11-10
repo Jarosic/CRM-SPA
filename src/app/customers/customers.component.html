@@ -1,21 +1,19 @@
-<nav class="navbar navbar-light" style="background-color: lightblue;">
-  <a class="navbar-brand" style="font-size: 20px;">Customer Relationship Management</a>
-</nav>
+<mat-toolbar style="background-color: lightblue">
+  <span>Customer Relationship Management</span>
+</mat-toolbar>
 
 <div class="container m-3">
     <div class="row justify-content-around">
-      <div class="col-md-6 text-center" style="min-height: 500px">
-
-        <app-list (getId)="getId($event)"></app-list>
-
-      </div>
-      <div class="col-md-4 float-right text-center">
-        <button class="btn btn-secondary m-2" routerLink="/customers/add">Add customer</button>
+        <mat-card class="col-md-6 text-center" style="min-height: 500px">
+          <app-list (getId)="getId($event)"></app-list>
+        </mat-card>
+      <mat-card class="col-md-4 float-right text-center">
+        <button mat-raised-button color="primary"routerLink="/customers/add">Add customer</button><hr>
         <router-outlet></router-outlet>
-    </div>
+    </mat-card>
   </div>
 </div>
 
-<footer class="container-fluid">
-  <p class="navbar-text">CRM</p>
-</footer> 
+<mat-toolbar style="background-color: lightblue">
+  <span>CRM</span>
+</mat-toolbar>
