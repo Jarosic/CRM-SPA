@@ -1,63 +1,66 @@
-
-<h3>Add customer</h3>
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input 
-        type="name" 
-        class="form-control"  
-        id="add-name" 
-        aria-describedby="emailHelp" 
-        placeholder="Enter name"
-        ngModel
-        name="name"
-        required
-        minlength="2"
-        #name="ngModel"
-      >
-      <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-        <p *ngIf="name.errors.minlength">Name must be at least 2 characters long.</p>
-        <p *ngIf="name.errors.required">Name is required.</p>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="surname">Surname</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        id="add-surname" 
-        placeholder="Enter surname"
-        name="surname"
-        ngModel
-        required
-        #surname="ngModel"
-        minlength="2"
-      >
-      <div class="alert alert-danger" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
-        <p *ngIf="surname.errors.minlength">Surname must be at least 2 characters long.</p>
-        <p *ngIf="surname.errors.required">Surname is required.</p>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="age">Age</label>
-      <input 
-        type="number" 
-        class="form-control" 
-        id="exampleInputPassword1" 
-        placeholder="Enter age"
-        name="age"
-        ngModel
-        required
-        #age="ngModel"
-      >
-      <div class="alert alert-danger" *ngIf="age.invalid && (age.dirty || age.touched)">
-        <p *ngIf="age.errors.required">Age is required.</p>
-      </div>
-    </div>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <h3>Add customer</h3>
+  <mat-form-field>
+    <input 
+      matInput 
+      type="name" 
+      id="add-name"
+      placeholder="Enter name"
+      ngModel
+      name="name"
+      required
+      minlength="2"
+      #name="ngModel"
+    >
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+      <p *ngIf="name.errors.minlength">Name must be at least 2 characters long.</p>
+      <p *ngIf="name.errors.required">Name is required.</p>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input 
+      matInput 
+      type="text" 
+      id="add-surname"
+      placeholder="Enter surname"
+      ngModel
+      name="surname"
+      required
+      minlength="2"
+      #surname="ngModel"
+    >
+    <mat-error *ngIf="surname.invalid && (surname.dirty || surname.touched)">
+      <p *ngIf="surname.errors.minlength">Surname must be at least 2 characters long.</p>
+      <p *ngIf="surname.errors.required">Surname is required.</p>
+    </mat-error>
+    </mat-form-field>
+  <mat-form-field>
+    <input 
+      matInput 
+      type="number" 
+      id="add-age"
+      placeholder="Enter age"
+      ngModel
+      name="age"
+      required
+      #age="ngModel"
+    >
+    <mat-error *ngIf="age.invalid && (age.dirty || age.touched)">
+      <p *ngIf="age.errors.required">Age is required.</p>
+    </mat-error>
+  </mat-form-field>
+  <div>
     <button 
-      type="submit" 
-      class="btn btn-primary m-1"
-      [disabled]="form.invalid"
-    >Submit</button>
-    <button  class="btn btn-secondary" routerLink="/">Close</button>
+    mat-raised-button
+    class="btn-submit" 
+    type="submit" 
+    [disabled]="form.invalid"
+  >Submit</button>
+  <button
+    mat-raised-button 
+    color="warn"  
+    routerLink="/"
+  >Close</button>
+  </div>
 </form>
+ 
