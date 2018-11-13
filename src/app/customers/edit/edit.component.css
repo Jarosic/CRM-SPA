@@ -1,3 +1,10 @@
-.ng-touched.ng-invalid:not(form) {
-    border: 2px solid red;
+.mat-form-field {
+    min-width: 250px;
+    margin-top: 10px;
+}
+
+.btn-submit {
+    background-color: green;
+    margin-right: 3px;
+    color: white;
 }
